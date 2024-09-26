@@ -1,11 +1,12 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import PageContainer from '@/components/layout/page-container';
 
 const PropertyDetailsPage = () => {
   return (
-    <div className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
-      <div className="flex flex-col gap-6 m-4">
+    <PageContainer>
+      <div className="flex flex-col gap-6">
         <div className="w-full">
           <Image
             src="/beach-house.jpg"
@@ -52,7 +53,7 @@ const PropertyDetailsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 
