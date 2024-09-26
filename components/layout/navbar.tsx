@@ -1,4 +1,4 @@
-import { CircleUser, Menu, Package2, Search } from 'lucide-react';
+import { CircleUser, Menu, Search, TreePalm } from 'lucide-react';
 import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { Button } from '../ui/button';
@@ -20,7 +20,7 @@ const Navbar = () => {
           href="/"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
-          <Package2 className="h-6 w-6" />
+          <TreePalm className="h-6 w-6 text-app" />
           <span className="sr-only">Acme Inc</span>
         </Link>
         <Link
@@ -36,22 +36,16 @@ const Navbar = () => {
           Landlords
         </Link>
         <Link
-          href="/reservations"
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          href="/my-reservations"
+          className="w-28 text-muted-foreground transition-colors hover:text-foreground"
         >
-          Resevations
+          <h1>My Reservations</h1>
         </Link>
         <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          href="/my-properties"
+          className="w-24 text-muted-foreground transition-colors hover:text-foreground"
         >
-          Customers
-        </Link>
-        <Link
-          href="#"
-          className="text-foreground transition-colors hover:text-foreground"
-        >
-          Settings
+          <h1>My Properties</h1>
         </Link>
       </nav>
       <Sheet>
@@ -67,7 +61,7 @@ const Navbar = () => {
               href="#"
               className="flex items-center gap-2 text-lg font-semibold"
             >
-              <Package2 className="h-6 w-6" />
+              <TreePalm className="h-6 w-6 text-app" />
               <span className="sr-only">Acme Inc</span>
             </Link>
             <Link
