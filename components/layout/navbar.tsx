@@ -1,3 +1,4 @@
+'use client';
 import { CircleUser, Menu, Search, TreePalm } from 'lucide-react';
 import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
@@ -11,8 +12,23 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Navbar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const handleSignInClick = () => {
+    // Create a new URLSearchParams object
+    const newSearchParams = new URLSearchParams(searchParams);
+    // Add or update the 'sign-in' query parameter
+    newSearchParams.set('sign-in', 'true');
+
+    // Use the router to navigate with the updated search params
+    router.push(`${pathname}?${newSearchParams.toString()}`);
+  };
+
   return (
     <header className="top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -116,11 +132,20 @@ const Navbar = () => {
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <Link href={'/inbox'}>
-              <DropdownMenuItem>Inbox</DropdownMenuItem>
+              <DropdownMenuItem className="focus:cursor-pointer">
+                Inbox
+              </DropdownMenuItem>
             </Link>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem
+              className="focus:cursor-pointer"
+              onClick={handleSignInClick}
+            >
+              Sign In
+            </DropdownMenuItem>
+
+            <DropdownMenuItem className="focus:cursor-pointer">
+              Sign Up
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

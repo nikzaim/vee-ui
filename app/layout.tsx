@@ -3,6 +3,7 @@ import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import SignIn from '@/components/modal/sign-in';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Navbar />
         <main>
           <ScrollArea className="h-[calc(100vh-64px)]">{children}</ScrollArea>
+          <SignIn />
         </main>
       </body>
     </html>
