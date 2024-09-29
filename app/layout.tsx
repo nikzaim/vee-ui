@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/layout/navbar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import SignIn from '@/components/modal/sign-in';
+import SignUp from '@/components/modal/sign-up';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <main>
           <ScrollArea className="h-[calc(100vh-64px)]">{children}</ScrollArea>
           <SignIn />
+          <SignUp />
         </main>
       </body>
     </html>

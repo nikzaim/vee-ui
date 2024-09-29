@@ -19,11 +19,16 @@ const Navbar = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const handleSignInClick = () => {
+  const handleActionClick = (action: string) => {
     // Create a new URLSearchParams object
     const newSearchParams = new URLSearchParams(searchParams);
-    // Add or update the 'sign-in' query parameter
-    newSearchParams.set('sign-in', 'true');
+
+    if (action === 'sign-in') {
+      // Add or update the 'sign-in' query parameter
+      newSearchParams.set('sign-in', 'true');
+    } else {
+      newSearchParams.set('sign-up', 'true');
+    }
 
     // Use the router to navigate with the updated search params
     router.push(`${pathname}?${newSearchParams.toString()}`);
@@ -138,12 +143,15 @@ const Navbar = () => {
             </Link>
             <DropdownMenuItem
               className="focus:cursor-pointer"
-              onClick={handleSignInClick}
+              onClick={() => handleActionClick('sign-in')}
             >
               Sign In
             </DropdownMenuItem>
 
-            <DropdownMenuItem className="focus:cursor-pointer">
+            <DropdownMenuItem
+              className="focus:cursor-pointer"
+              onClick={() => handleActionClick('sign-up')}
+            >
               Sign Up
             </DropdownMenuItem>
           </DropdownMenuContent>
